@@ -1,35 +1,22 @@
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Story() {
-  const storyRef = useRef(null);
-
   useEffect(() => {
-    gsap.fromTo(
-      storyRef.current,
-      { opacity: 0, y: 50 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 1.5,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: storyRef.current,
-          start: "top 80%",
-          toggleActions: "play none none none",
-        },
-      }
-    );
+    gsap.from(".story-block", {
+      scrollTrigger: { trigger: ".story-block", start: "top 90%" },
+      opacity: 0,
+      y: 30,
+      duration: 1.2,
+      ease: "power2.out"
+    });
   }, []);
 
   return (
-    <section
-      ref={storyRef}
-      className="py-20 bg-black px-6 md:px-16 text-gray-300 overflow-hidden"
-    >
+    <section className="story-block py-20 bg-black px-6 md:px-16 text-gray-300">
       <div className="max-w-4xl mx-auto text-center">
         <h2 className="text-4xl font-bold mb-6 text-yellow-400">Our Story</h2>
         <p className="text-lg leading-relaxed">
