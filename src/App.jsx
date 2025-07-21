@@ -1,50 +1,51 @@
-import Hero from './components/Hero'
-import Menu from './components/Menu'
-import Popular from './components/Popular'
-import Story from './components/Story'
-import Footer from './components/Footer'
-import Loader from './components/Loader'
-import CustomCursor from './components/CustomCursor'
+// src/App.jsx
+
+import { Toaster } from 'react-hot-toast'; 
+
+import Navbar from './components/Navbar';
+import Hero from './components/Hero';
+import Menu from './components/Menu';
+import Popular from './components/Popular';
+import Story from './components/Story';
+import Footer from './components/Footer';
+import Loader from './components/Loader';
+import CustomCursor from './components/CustomCursor';
 
 export default function App() {
   return (
     <>
       <CustomCursor />
-
-      <button className="cursor-hover px-6 py-3 bg-yellow-300 text-black rounded-lg fixed top-5 right-5 z-50">
-        Order Now
-      </button>
+      <Navbar />
+      <Toaster position="top-center" reverseOrder={false} />
 
       <Loader>
-        <div className="snap-y snap-mandatory h-screen overflow-y-scroll scroll-smooth bg-zinc-900 text-white">
+        <main className="bg-zinc-900">
+          {/* We've removed the scroll-snap container. 
+            Each section is now wrapped in a simple div with an ID for navigation.
+          */}
 
-          {/* Hero Section */}
-          <div className="snap-start">
+          <div id="home">
             <Hero />
           </div>
 
-          {/* Menu Section */}
-          <div className="snap-start">
+          <div id="menu">
             <Menu />
           </div>
 
-          {/* Popular Items */}
-          <div className="snap-start">
+          <div id="popular">
             <Popular />
           </div>
 
-          {/* Story/About Us */}
-          <div className="snap-start">
+          <div id="about">
             <Story />
           </div>
 
-          {/* Footer */}
-          <div className="snap-end">
+          <div id="contact">
             <Footer />
           </div>
 
-        </div>
+        </main>
       </Loader>
     </>
-  )
+  );
 }
