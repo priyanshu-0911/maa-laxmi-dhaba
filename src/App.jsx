@@ -1,51 +1,49 @@
 // src/App.jsx
 
-import { Toaster } from 'react-hot-toast'; 
+import { useEffect } from 'react';
+import { Outlet, useLocation } from 'react-router-dom';
+import Lenis from '@studio-freight/lenis';
+import { Toaster } from 'react-hot-toast';
+import { AnimatePresence } from 'framer-motion';
 
 import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import Menu from './components/Menu';
-import Popular from './components/Popular';
-import Story from './components/Story';
 import Footer from './components/Footer';
+import StickyFooterBar from './components/StickyFooterBar';
 import Loader from './components/Loader';
-import CustomCursor from './components/CustomCursor';
 
 export default function App() {
+  const location = useLocation();
+  
+  useEffect(() => {
+    const lenis = new Lenis();
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+  }, []);
+
   return (
     <>
-      <CustomCursor />
       <Navbar />
+      <StickyFooterBar />
       <Toaster position="top-center" reverseOrder={false} />
 
       <Loader>
         <main className="bg-zinc-900">
-          {/* We've removed the scroll-snap container. 
-            Each section is now wrapped in a simple div with an ID for navigation.
-          */}
-
-          <div id="home">
-            <Hero />
-          </div>
-
-          <div id="menu">
-            <Menu />
-          </div>
-
-          <div id="popular">
-            <Popular />
-          </div>
-
-          <div id="about">
-            <Story />
-          </div>
-
-          <div id="contact">
-            <Footer />
-          </div>
-
+          <AnimatePresence mode="wait">
+            {/* The key tells AnimatePresence when the page changes */}
+            <div key={location.pathname}>
+              <Outlet />
+            </div>
+          </AnimatePresence>
         </main>
       </Loader>
+      
+      {/* The #contact div is part of the Footer component */}
+      <div id="contact">
+        <Footer />
+      </div>
     </>
   );
 }

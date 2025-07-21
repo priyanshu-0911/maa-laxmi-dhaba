@@ -3,6 +3,12 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      // 👇👇 ADD THIS FONT FAMILY SECTION 👇👇
+      fontFamily: {
+        'display': ['Playfair Display', 'serif'],
+        'sans': ['Inter', 'sans-serif'],
+      },
+      // Your existing config is preserved below
       colors: {
         primary: "#ffd700",
         dark: "#111111",
@@ -25,6 +31,6 @@ export default {
     },
   },
   plugins: [
-    require('tailwind-scrollbar-hide'), // ✅ Correct placement
+    require('tailwind-scrollbar-hide'),
   ],
 };
