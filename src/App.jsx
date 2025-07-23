@@ -10,6 +10,8 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import StickyFooterBar from './components/StickyFooterBar';
 import Loader from './components/Loader';
+import ScrollToTop from './components/ScrollToTop';
+import Location from './components/Location'; // 1. Import the new component
 
 export default function App() {
   const location = useLocation();
@@ -25,6 +27,7 @@ export default function App() {
 
   return (
     <>
+      <ScrollToTop />
       <Navbar />
       <StickyFooterBar />
       <Toaster position="top-center" reverseOrder={false} />
@@ -32,7 +35,6 @@ export default function App() {
       <Loader>
         <main className="bg-zinc-900">
           <AnimatePresence mode="wait">
-            {/* The key tells AnimatePresence when the page changes */}
             <div key={location.pathname}>
               <Outlet />
             </div>
@@ -40,7 +42,9 @@ export default function App() {
         </main>
       </Loader>
       
-      {/* The #contact div is part of the Footer component */}
+      {/* 2. Add the Location section before the Footer */}
+      <Location />
+      
       <div id="contact">
         <Footer />
       </div>

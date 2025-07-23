@@ -3,21 +3,22 @@
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
+// Using optimized image links (w=800 for larger images)
 const specialDishes = [
   {
     name: "Lal Pari (House Special)",
     description: "Our legendary house special! A vibrant, red-hued paneer curry with a secret blend of spices for a truly magical and unforgettable taste.",
-    imageUrl: "/images/lal-pari.jpg"
+    imageUrl: "https://images.unsplash.com/photo-1668551685822-86a74b093c83?w=800&q=80&auto=format&fit=crop"
   },
   {
     name: "Dal Bafla",
     description: "A traditional Malwa delicacy. Wheat dough balls are boiled and then baked, served drenched in rich, aromatic dal and a generous helping of pure ghee.",
-    imageUrl: "/images/dal-bafla.jpg"
+    imageUrl: "https://plus.unsplash.com/premium_photo-1695295329096-d805211b853e?w=800&q=80&auto=format&fit=crop"
   },
   {
     name: "Paneer Tikka (Dry)",
     description: "Marinated paneer cubes grilled to perfection in a tandoor and tossed with onions, peppers, and dry spices for a smoky flavour.",
-    imageUrl: "/images/paneer-tikka.jpg"
+    imageUrl: "https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=800&q=80&auto=format&fit=crop"
   }
 ];
 

@@ -3,9 +3,10 @@
 import { motion } from 'framer-motion';
 
 import Hero from '../components/Hero';
-import MenuHighlight from '../components/MenuHighlight'; // Using the new highlight component
+import MenuHighlight from '../components/MenuHighlight';
 import Specials from '../components/Specials';
 import Testimonials from '../components/Testimonials';
+import AboutOwner from '../components/AboutOwner'; // 1. Import the new component
 
 const sectionVariants = {
   hidden: { opacity: 0, y: 50 },
@@ -24,10 +25,12 @@ export default function HomePage() {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <div id="home"><Hero /></div>
-      
+      <div id="home">
+        <Hero />
+      </div>
+
       <motion.div
-        id="menu-highlight"
+        id="menu-highlight" // Changed id from "menu"
         variants={sectionVariants}
         initial="hidden"
         whileInView="visible"
@@ -36,7 +39,15 @@ export default function HomePage() {
         <MenuHighlight />
       </motion.div>
 
-      <div id="specials"><Specials /></div>
+      <motion.div
+        id="specials"
+        variants={sectionVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+      >
+        <Specials />
+      </motion.div>
 
       <motion.div
         variants={sectionVariants}
@@ -46,6 +57,10 @@ export default function HomePage() {
       >
         <Testimonials />
       </motion.div>
+
+      {/* 2. Add the new AboutOwner section here */}
+      <AboutOwner />
+      
     </motion.div>
   );
 }
